@@ -1,0 +1,21 @@
+- Create a respository
+- Initialize the respository
+- node_modules, package.json, package-lock.json
+- Install Express
+- Create a server
+- Listen to the port 1818
+- write request handlers for testing only /test, /about, /contact
+- Install nodemon and update the script inside the package.json file
+- what are the dependencies
+- what is the use of "-g" while npm install
+- difference between caret and tilde (^ and ~)
+
+
+- initialize the git repo
+- add .gitignore
+- create remote repo on git hub
+- push all code to remote region (git hub)
+- play with routes and routes extensions ex: /hello  or /hello/2
+- order of the routes matter here
+- Install postman app and make a workspace/colletions >> test you API calls
+- write a logic to handle GET, POST, PATCH, and DELETE API calls and test them on postman

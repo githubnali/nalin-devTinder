@@ -2,12 +2,24 @@ const express = require('express');
 
 const app = express();
 
-app.use("/about", (req, resp) => {
-    resp.send('about Hello From server.....');
+app.get('/user', (req, resp) => {
+    resp.send("get the user data successfully");
 })
 
-app.use("/contact", (req, resp) => {
-    resp.send("contact page");
+app.post('/user', (req, resp) => {
+    resp.send("User data updated successfully")
+})
+
+app.put('/user', (req, resp) => {
+    resp.send('updated previous user data completely')
+})
+
+app.patch("/user", (req, resp) => {
+    resp.send("partial data of the user gets updated")
+})
+
+app.delete("/user", (req, resp) => {
+    resp.send("User delete successfully")
 })
 
 app.use("/", (req, resp) => {
