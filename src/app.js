@@ -2,26 +2,29 @@ const express = require('express');
 
 const app = express();
 
-//regular expression with /a/ or /.*fly$/
-app.get(/.*rot$/, (req, resp) => {
-    resp.send({
-        "first_name": 'nagaraju nali',
-        "last_name": 'nali'
-    });
-})
-
-// general routing using query parameters /user?un=nagaraju&pw=testing
-app.get("/user", (req, resp) => {
-    console.log(req.query)
-    resp.send('data sent')
-})
-
-// dynamic routing accesing through req.parameters
-app.get("/user/:userId", (req, resp) => {
-    console.log(req.params);
-
-    resp.send('get the user id as num')
-})
+//app.use("/routes", rh1, [rh2, rh3], rh4, rh5)
+app.use(
+    "/user", 
+    (req, resp, next) => {
+        console.log("consolelog 1");
+        next();
+        resp.send("1 response");
+    }, 
+    (req, resp, next) => {
+        console.log("consolelog 2");
+        next()
+        resp.send("2 response");
+    },
+    (req, resp, next) => {
+        console.log("consolelog 3");
+        next()
+        resp.send("3 response");
+    },
+    (req, resp, next) => {
+        console.log("consolelog 4");
+        resp.send("4 response");
+    }
+)
 
 
 app.listen(1818, () => {
