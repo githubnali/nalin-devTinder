@@ -24,7 +24,7 @@
 - reading the query params in the route query object
 - reading the dynamic routes using params object
 
-
+EP:05: middlewares & handlers
 - Multiple Routr Handlers
 - next()
 - next function along with errors
@@ -37,6 +37,7 @@
 - Error Handling using app.use("/", (err, req, resp, next))
 
 
+EP:06
 - create a free cluster (mongodb atlas)
 - install mongoose library
 - connect your application to Database "Connection-url": /nalin-devTinder
@@ -45,3 +46,8 @@
 - Create POST /signup  API to add  data into database
 - Push some documents using API calls from postman
 - Error Handling using try, catch
+
+EP:07
+- JS Object vs JSON Object
+- add the express.json() milldleware to your app
+- make your signup API  dynamci to receieve data from the end user

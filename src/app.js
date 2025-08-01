@@ -6,17 +6,15 @@ const app = express();
 
 const User = require('./models/user')
 
+//converts the JSON data into JS Obj
+app.use(express.json())
+
 app.post("/signup", async (req, resp) => {
-    const userObj = {
-        firstName: 'Uma Mahesh',
-        lastName: 'Onteru',
-        emailId: 'uma1@gmail.com',
-        password: 'Uma@122'
-    }
+
+    // passing user data dynamically from an API
+    const user = new User(req.body)
 
     try {
-        // creating a new instance of the user model
-        const user = new User(userObj)
         await user.save();
         resp.send("User Added Successfully");
     } catch(err) {
