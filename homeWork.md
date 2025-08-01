@@ -35,3 +35,13 @@
 - write a dummy auth middle ware for admin
 - write a dummy auth middleware for all the user, routes, except /user/login
 - Error Handling using app.use("/", (err, req, resp, next))
+
+
+- create a free cluster (mongodb atlas)
+- install mongoose library
+- connect your application to Database "Connection-url": /nalin-devTinder
+- call the connectDB function and connect  to database before starting the server on 1818
+- create a userSchema & userModel
+- Create POST /signup  API to add  data into database
+- Push some documents using API calls from postman
+- Error Handling using try, catch
