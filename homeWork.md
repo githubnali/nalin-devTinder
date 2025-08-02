@@ -51,3 +51,6 @@ EP:07
 - JS Object vs JSON Object
 - add the express.json() milldleware to your app
 - make your signup API  dynamci to receieve data from the end user
+- to find the duplicates email ids using findOne() which one will it give you in output
+- API - get user by email id
+- API - feed API - GET /feed - get all the users from  the database
