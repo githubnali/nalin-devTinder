@@ -53,6 +53,50 @@ app.get("/feed", async(req, resp) => {
 
 })
 
+app.delete("/user", async(req, resp) => {
+    const userId = req.body.userId;
+    try {
+        //to get the user id by find by id and delete method
+        const user = await User.findByIdAndDelete(userId);
+        resp.send("User Deleted Successfully")
+    } catch(err) {
+        resp.status(400).send("something went wrong");
+    }
+})
+
+//update the user using userId
+app.patch("/user", async(req, resp) => {
+    const userId = req.body.userId;
+    const userData = req.body;
+
+    console.log(userData);
+
+    try {
+        const updateUser = await User.findByIdAndUpdate({_id:userId}, userData, {
+            returnDocument: 'before'
+        });
+        console.log(updateUser)
+        resp.send("User Updated Successfully")
+    }catch(err) {
+        resp.status(400).send("something went wrong");
+    }
+});
+
+//update the user using emailID
+app.patch("/user", async(req, resp) => {
+    const userData = req.body;
+
+    try {
+        const updateUsingEmailId = await User.findOneAndUpdate({emailId:userData.emailId}, userData, {
+            returnDocument: "before"
+        })
+        console.log(updateUsingEmailId);
+        resp.send("Updated user with matching email id");
+    }catch(err) {
+        resp.status(400).send("something went wrong");
+    }
+})
+
 connectDB()
     .then(() => {
         console.log("Database Connection Established.....")

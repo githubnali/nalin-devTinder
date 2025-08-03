@@ -54,3 +54,8 @@ EP:07
 - to find the duplicates email ids using findOne() which one will it give you in output
 - API - get user by email id
 - API - feed API - GET /feed - get all the users from  the database
+- Create a delete user API
+- difference between PATCH and  PUT
+- API - Update a user using userId
+- Explore Mongoose documentation
+- API - Update the user using emailID
