@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const validator = require('validator')
+
 const userSchema = new mongoose.Schema(
     {
         firstName: {
@@ -7,7 +9,13 @@ const userSchema = new mongoose.Schema(
             required:true,
             minLength: [4, "First name must be at least 4 characters"],
             maxLength: [50, "First name must not exceed 50 characters"],
-            trim: true
+            trim: true,
+             validate(val) {
+                if(!validator.isAlpha(val)) {
+                    throw new Error("Your First Name Should Contains Only Alphabhetics" + val)
+                }
+            }
+            
         },
         lastName: {
             type: String,
@@ -20,19 +28,29 @@ const userSchema = new mongoose.Schema(
             unique: true,
             lowercase: true,
             trim: true,
-            match: [/^\S+@\S+\.\S+$/, "Please provide a valid email address"]
+            // match: [/^\S+@\S+\.\S+$/, "Please provide a valid email address"],
+            validate(val) {
+                if(!validator.isEmail(val)) {
+                    throw new Error("Invalid email address: " + val)
+                }
+            }
 
         },
         password: {
             type: String,
             required:true,
             minLength: [8, "Password must be at least 8 characters"],
-            validate: {
-                validator(val) {
-                    return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#&])/.test(val);
-                },
-                message: "Password must contain uppercase, lowercase, digit, and special character"
+            // validate: {
+            //     validator(val) {
+            //         return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#&])/.test(val);
+            //     },
+            //     message: "Password must contain uppercase, lowercase, digit, and special character"
 
+            // }
+            validate(val) {
+                if(!validator.isStrongPassword(val)) {
+                    throw new Error("Password must contain uppercase, lowercase, digit, and special character:" + val)
+                }
             }
         },
         age: {
@@ -51,7 +69,13 @@ const userSchema = new mongoose.Schema(
         photoUrl: {
             type: String,
             default: "https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=",
-            match: [/^https?:\/\/.+/, "Photo URL must be a valid link"]
+            // match: [/^https?:\/\/.+/, "Photo URL must be a valid link"]
+            validate(val) {
+                if(!validator.isURL(val)) {
+                    throw new Error("Invalid Phot URL: " + val)
+                }
+            }
+
         },
         about: {
             type: String,

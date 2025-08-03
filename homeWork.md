@@ -69,3 +69,7 @@ EP:08
 - add timestamp to the user schema
 - add API level validation on patch request and signup post api
 - data sanitization add API validation for each filed
+- Install validator npm package
+- Explore what all the validator functions
+- applied few validators on schema level like first name, email, password, photUrl etc...
+- never ever trust your request.body it may contain melicous data
