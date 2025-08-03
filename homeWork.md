@@ -59,3 +59,11 @@ EP:07
 - API - Update a user using userId
 - Explore Mongoose documentation
 - API - Update the user using emailID
+
+EP:08
+- explore the schematype option from the documentation
+- add required, unique, lowercase, uppercase, min, minlength, maxlength, trim
+- add default value
+- create a custom validate function
+- Improve the DB schema - PUT  appropriate validations on each filed in schema
+- add timestamp to the user schema

@@ -73,7 +73,8 @@ app.patch("/user", async(req, resp) => {
 
     try {
         const updateUser = await User.findByIdAndUpdate({_id:userId}, userData, {
-            returnDocument: 'before'
+            returnDocument: 'before',
+            runValidators: true,
         });
         console.log(updateUser)
         resp.send("User Updated Successfully")
@@ -83,19 +84,19 @@ app.patch("/user", async(req, resp) => {
 });
 
 //update the user using emailID
-app.patch("/user", async(req, resp) => {
-    const userData = req.body;
+// app.patch("/user", async(req, resp) => {
+//     const userData = req.body;
 
-    try {
-        const updateUsingEmailId = await User.findOneAndUpdate({emailId:userData.emailId}, userData, {
-            returnDocument: "before"
-        })
-        console.log(updateUsingEmailId);
-        resp.send("Updated user with matching email id");
-    }catch(err) {
-        resp.status(400).send("something went wrong");
-    }
-})
+//     try {
+//         const updateUsingEmailId = await User.findOneAndUpdate({emailId:userData.emailId}, userData, {
+//             returnDocument: "before"
+//         })
+//         console.log(updateUsingEmailId);
+//         resp.send("Updated user with matching email id");
+//     }catch(err) {
+//         resp.status(400).send("something went wrong");
+//     }
+// })
 
 connectDB()
     .then(() => {
