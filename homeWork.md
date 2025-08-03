@@ -67,3 +67,5 @@ EP:08
 - create a custom validate function
 - Improve the DB schema - PUT  appropriate validations on each filed in schema
 - add timestamp to the user schema
+- add API level validation on patch request and signup post api
+- data sanitization add API validation for each filed
