@@ -73,3 +73,9 @@ EP:08
 - Explore what all the validator functions
 - applied few validators on schema level like first name, email, password, photUrl etc...
 - never ever trust your request.body it may contain melicous data
+
+EP:09
+- Validate data in signup API using helper function
+- Intsall bcrypt npm package
+- create a password hash using bcrypt.hash(plainpassword, salt rounds)
+- save the user with encrypted password

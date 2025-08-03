@@ -1,4 +1,5 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
 
 const {connectDB} =  require("./config/database");
 
@@ -7,19 +8,38 @@ const app = express();
 const User = require('./models/user');
 const user = require('./models/user');
 
+const {validateSignupData} = require('./utils/validation')
+
 //converts the JSON data into JS Obj
 app.use(express.json())
 
 app.post("/signup", async (req, resp) => {
 
-    // passing user data dynamically from an API
-    const user = new User(req.body)
-
     try {
+
+        //Validation of data
+        validateSignupData(req)
+
+        const {password, firstName, lastName, emailId} = req.body
+
+        //Encrypting the password
+        const passwordHash = await bcrypt.hash(password, 10)
+        console.log(passwordHash);
+
+        // passing user data dynamically from an API
+        const user = new User(
+            {
+                firstName, 
+                lastName, 
+                emailId, 
+                password: passwordHash
+            }
+        )
+
         await user.save();
         resp.send("User Added Successfully");
     } catch(err) {
-        resp.status(400).send("Error saving the user:" + err.message);
+        resp.status(400).send("ERROR: " + err.message);
     }
 })
 
