@@ -8,6 +8,8 @@ const app = express();
 const User = require('./models/user');
 const user = require('./models/user');
 
+const validator = require('validator')
+
 const {validateSignupData} = require('./utils/validation')
 
 //converts the JSON data into JS Obj
@@ -39,6 +41,33 @@ app.post("/signup", async (req, resp) => {
         await user.save();
         resp.send("User Added Successfully");
     } catch(err) {
+        resp.status(400).send("ERROR: " + err.message);
+    }
+})
+
+app.post("/login", async(req, resp) => {
+    try {
+        const {emailId, password} = req.body;
+
+        const user = await User.findOne({emailId: emailId});
+
+        if(!validator.isEmail(emailId)) {
+            throw new Error("Please enter a valid email address: ", emailId)
+        }
+
+        if(!user) {
+            throw new Error("Invalid Credentials")
+        }
+
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+
+        if(isPasswordValid) {
+            resp.send("User logged in successfully")
+        }else {
+            throw new Error("Invalid Credentials")
+        }
+
+    }catch(err) {
         resp.status(400).send("ERROR: " + err.message);
     }
 })

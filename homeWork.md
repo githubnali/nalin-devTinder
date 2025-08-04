@@ -79,3 +79,5 @@ EP:09
 - Intsall bcrypt npm package
 - create a password hash using bcrypt.hash(plainpassword, salt rounds)
 - save the user with encrypted password
+- create login api 
+- compare passwords and throw errors if email or password is invalid
