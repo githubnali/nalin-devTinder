@@ -1,25 +1,33 @@
-const adminAuth = (req, resp, next) => {
-    console.log("Admin Auth Checking");
-    const token = 'nali';
+const jwt = require('jsonwebtoken');
+const User = require('../models/user')
 
-    const isAdminAuth = token === 'nali';
-    if(!isAdminAuth) {
-        resp.status(401).send('Unauthorized User');
-    }  else {
-        next();
+const userAuth = async (req, resp, next) => {
+
+    try {
+        //read the token from the req cookies
+        const {token} = req.cookies;
+        if(!token) {
+            throw new Error("token is not valid!!!")
+        }
+
+        //validate the token
+        const decodedData = await jwt.verify(token, "Nali@devtinder$123", {
+            expires: new Date(Date.now() + 8 * 3600000) // cookie will be removed after 8 hours
+        })
+
+        const { _id } = decodedData;
+        //find the user
+        const user = await User.findById(_id);
+        if(!user) {
+            throw new error("User not found")
+        }
+
+        req.user = user;
+        next()
+    }catch(err) {
+        resp.status(400).send("ERROR: " + err.message)
     }
+    
 }
 
-const userAuth = (req, resp, next) => {
-    console.log("User Auth Checking");
-    const token = 'nali';
-
-    const isAdminAuth = token === 'nali';
-    if(!isAdminAuth) {
-        resp.status(401).send('Unauthorized User');
-    }  else {
-        next();
-    }
-}
-
-module.exports = {adminAuth, userAuth}
+module.exports = {userAuth}

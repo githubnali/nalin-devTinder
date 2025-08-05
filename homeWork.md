@@ -81,3 +81,21 @@ EP:09
 - save the user with encrypted password
 - create login api 
 - compare passwords and throw errors if email or password is invalid
+
+EP:10
+- Install cookie parser npm package
+- just send a dummy cookie to user
+- create GET /profile api and check if you get the cookie back 
+- install jsonwebtoken npm package
+- inside login api after email and password validation create a jwt toekn and send it back to user in cookies
+- read the cookies inside profile api and find the logged in user
+- userAuth middleware
+- Add the userAuth middleware in profile api and sendingConnectionRequest api
+- Set the expiry fo JWT token and cookies to 7 days
+- create userSchema methods to getJWT()
+- create userSchema method to compare and validatePassword()
+
+EP:11
+- Explore tinder APIs with
+- Create a list of all APIs you can think of in nalin-devtinder
+- Group multiple routes under under respective routes
