@@ -99,3 +99,7 @@ EP:11
 - Explore tinder APIs with
 - Create a list of all APIs you can think of in nalin-devtinder
 - Group multiple routes under under respective routes
+- Read Documentation for express.Router()
+- Create routes folder for managing authRouter, profileRouter, requestRouter inside the router folder under src folder
+- create authRouter, profileRouter, requestRouter
+- improt these routes into app.js
