@@ -2,13 +2,13 @@
 
 ## authRouter
 - POST /signup :- creating a profile
-- POST /login
-- POST /logout
+- POST /login :- login using username, password
+- POST /logout :- 
 
 ## profileRouter
 - GET /profile/view :- to get the profile(profile view)
 - PATCH /profile/edit :- to update the profile(edit)
-- PATCH /profile/password :- to change the password
+- PATCH /profile/password :- to change the password of the profile
 
 ## connectionRequestRouter
 //sending the connection request

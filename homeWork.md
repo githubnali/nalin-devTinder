@@ -103,3 +103,7 @@ EP:11
 - Create routes folder for managing authRouter, profileRouter, requestRouter inside the router folder under src folder
 - create authRouter, profileRouter, requestRouter
 - improt these routes into app.js
+- Create POST /logout API and test it
+- Create PATCH /profile/edit
+- Create PATCH /profile/password API => this is your forgot password API
+- Make sure you validate all the POST PATCH request very very impotant

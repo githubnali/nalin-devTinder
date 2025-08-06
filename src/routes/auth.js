@@ -71,4 +71,10 @@ authRouter.post("/login" , async(req, resp) => {
     }
 })
 
+authRouter.post("/logout", async(req, resp) => {
+    resp.cookie("token", null, {
+        expires: new Date(Date.now()),
+    }).send("Logout Successfully")
+})
+
 module.exports = authRouter
