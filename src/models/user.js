@@ -14,7 +14,8 @@ const userSchema = new mongoose.Schema(
             minLength: [4, "First name must be at least 4 characters"],
             maxLength: [50, "First name must not exceed 50 characters"],
             trim: true,
-             validate(val) {
+            index: true,
+            validate(val) {
                 if(!validator.isAlpha(val)) {
                     throw new Error("Your First Name Should Contains Only Alphabhetics" + val)
                 }
@@ -108,8 +109,7 @@ const userSchema = new mongoose.Schema(
         timestamps: true
     }
 )
-
-
+ 
 userSchema.methods.getJWT = async function () {
     const user = this;
 
