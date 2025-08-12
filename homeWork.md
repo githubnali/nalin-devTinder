@@ -126,3 +126,15 @@ EP:13
 - thought process - POST vs GET
 - read about ref and populate
 - Create GET API /user/requests/received with all checks
+
+EP:14
+- Logic for the /feed API
+- Explore the $nin $ne $and other query operators
+- pagination
+- /feed?page=1&limit=10 => first 10 users (1-10) => .skip(0)&.limit(10)
+- /feed?page=2&limit=10 => next (11-20) => .skip(10)&.limit(10)
+- /feed?page=3&limit=10 => next (21-30) => .skip(20)&.limit(10)
+- in mongodb
+.skip() : how many documents you do skip from the starting
+.limit(): how may documents you required
+SKIP formula = (page-1)*limit;
