@@ -123,3 +123,6 @@ EP:12
 
 EP:13
 - write code with proper validations for POST /request/review/:status/:requestId"
+- thought process - POST vs GET
+- read about ref and populate
+- Create GET API /user/requests/received with all checks

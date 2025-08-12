@@ -19,8 +19,8 @@
 - PSOT /request/review/rejected/:reqyestId
 
 ## userRouter
+- GET /user/requests/received
 - GET /user/connections
-- GET /user/request
 - GET /user/feed - gets you the profiles of other users on platform
 
 Status: ignored, intrested, accepted, rejected
