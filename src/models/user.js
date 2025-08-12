@@ -16,8 +16,8 @@ const userSchema = new mongoose.Schema(
             trim: true,
             index: true,
             validate(val) {
-                if(!validator.isAlpha(val)) {
-                    throw new Error("Your First Name Should Contains Only Alphabhetics" + val)
+                if(!validator.isAlpha(val, 'en-US', {ignore: ' '})) {
+                    throw new Error("Your First Name Should Contains Only Alphabhetics " + val)
                 }
             }
             
