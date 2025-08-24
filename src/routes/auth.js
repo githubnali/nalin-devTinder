@@ -31,8 +31,15 @@ authRouter.post("/signup", async (req, resp) => {
             }
         )
 
-        await user.save();
-        resp.send("User Added Successfully");
+        const savedUser = await user.save();
+        //Create a JWT Token
+        const token = await user.getJWT()
+
+        //Add the token to cookie and send the response back to the user
+        resp.cookie("token", token, {
+            expires: new Date(Date.now() + 8 * 3600000), 
+        })
+        resp.json({message: "User Added Successfully", data: savedUser});
     } catch(err) {
         resp.status(400).send("ERROR: " + err.message);
     }
@@ -60,7 +67,9 @@ authRouter.post("/login" , async(req, resp) => {
             const token = await user.getJWT()
 
             //Add the token to cookie and send the response back to the user
-            resp.cookie("token", token)
+            resp.cookie("token", token, {
+                expires: new Date(Date.now() + 8 * 3600000), 
+            })
             resp.send(user)
         }else {
             throw new Error("Invalid Credentials")
