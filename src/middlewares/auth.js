@@ -11,7 +11,7 @@ const userAuth = async (req, resp, next) => {
         }
 
         //validate the token
-        const decodedData = await jwt.verify(token, "Nali@devtinder$123", {
+        const decodedData = await jwt.verify(token, process.env.JWT_SECRET, {
             expires: new Date(Date.now() + 8 * 3600000) // cookie will be removed after 8 hours
         })
 
