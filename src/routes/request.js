@@ -78,9 +78,12 @@ requestRouter.post("/request/send/:status/:toUserId", userAuth,  async(req, resp
         //saved into DB
         const data = await connectionRequest.save();
 
-        // const emailResponse = await sendEmail.run();
+        const emailResponse = await sendEmail.run(
+            "A new friend request from " + req.user.firstName,
+            req.user.firstName + " is " + status + " in " + toUser.firstName
+        );
 
-        // console.log("Email Response: ", emailResponse);
+        console.log("Email Response: ", emailResponse);
 
         //sending the response
         resp.json({

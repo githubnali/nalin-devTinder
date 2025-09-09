@@ -10,6 +10,8 @@ const cookieParser = require('cookie-parser');
 
 
 require('dotenv').config();
+
+require('./utils/cronJob');
 //converts the JSON data into JS Obj
 app.use(cors({
     origin: "http://localhost:5173",
