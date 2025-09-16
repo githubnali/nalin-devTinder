@@ -96,7 +96,6 @@ userRouter.get("/feed", userAuth, async(req, resp) => {
             hideUsersFromFeed.add(req.toUserId.toString());
         })
 
-        console.log(hideUsersFromFeed);
 
         const feedUsers = await User.find({
             $and: [

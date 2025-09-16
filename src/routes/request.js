@@ -79,6 +79,7 @@ requestRouter.post("/request/send/:status/:toUserId", userAuth,  async(req, resp
         const data = await connectionRequest.save();
 
         const emailResponse = await sendEmail.run(
+            toUser.emailId,
             "A new friend request from " + req.user.firstName,
             req.user.firstName + " is " + status + " in " + toUser.firstName
         );

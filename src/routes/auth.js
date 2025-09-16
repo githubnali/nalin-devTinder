@@ -19,7 +19,6 @@ authRouter.post("/signup", async (req, resp) => {
 
         //Encrypting the password
         const passwordHash = await bcrypt.hash(password, 10)
-        console.log(passwordHash);
 
         // passing user data dynamically from an API
         const user = new User(
