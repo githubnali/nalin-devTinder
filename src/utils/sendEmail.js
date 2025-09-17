@@ -15,7 +15,14 @@ const createSendEmailCommand = (toAddress, fromAddress, subject, body) => {
       Body: {
         Html: {
           Charset: "UTF-8",
-          Data: `<h1>${body}</h1>`,
+          Data: `
+            <h1>${body}</h1>
+            <p>This email was sent to you from DevBuddy</p>
+            <p>Please login to your account to accept the friend request and start collaborating</p>
+            <a href="https://devbuddy.in">https://devbuddy.in</a>
+            <br/>
+            <p>Do not reply to this email</p>
+          `,
         },
         Text: {
           Charset: "UTF-8",
