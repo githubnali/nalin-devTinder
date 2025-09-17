@@ -80,15 +80,15 @@ requestRouter.post("/request/send/:status/:toUserId", userAuth,  async(req, resp
 
         const emailResponse = await sendEmail.run(
             toUser.emailId,
-            "A new friend request from " + req.user.firstName,
-            req.user.firstName + " is " + status + " in " + toUser.firstName
+            "A New Friend Request from " + req.user.firstName + " " + req.user.lastName,
+            req.user.firstName + " sent an " + status + " request to you " + toUser.firstName
         );
 
         console.log("Email Response: ", emailResponse);
 
         //sending the response
         resp.json({
-            message: req.user.firstName + " is " + status + " in " + toUser.firstName,
+            message: req.user.firstName + " sent an " + status + " request to you " + toUser.firstName,
             data
         })
 
